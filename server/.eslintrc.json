@@ -21,7 +21,7 @@
     "quotes": ["error", "single"],
     "no-var": "error",
     "no-trailing-spaces": "warn",
-    "prettier/prettier": "error",
+    "prettier/prettier": "warn",
     "no-console": "warn",
     "func-names": "off"
   }
