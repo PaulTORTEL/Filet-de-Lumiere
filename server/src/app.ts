@@ -3,6 +3,7 @@ import BodyParser from 'body-parser';
 import CookieParser from 'cookie-parser';
 import Compression from 'compression';
 import router from './api/routes';
+import 'reflect-metadata';
 
 const app = Express();
 
@@ -29,7 +30,7 @@ app.use((req, res, next) => {
   }
 });
 
-app.use(router);
+app.use('/api', router);
 
 app.listen(8080, () => {
   console.clear();
