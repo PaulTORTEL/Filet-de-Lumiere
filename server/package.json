@@ -5,8 +5,8 @@
   "main": "./dist/app.js",
   "scripts": {
     "compile": "tsc && node ./dist/app.js",
-    "start": "nodemon -L \"npm run compile\"",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "NODE_ENV=dev && nodemon -L \"npm run compile\"",
+    "test": "NODE_ENV=test",
     "lint": "eslint --ext .ts ./src/app.ts"
   },
   "keywords": [],
