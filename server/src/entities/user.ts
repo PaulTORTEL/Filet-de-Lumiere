@@ -24,7 +24,7 @@ export class User {
     default: UserRole.NONE,
     name: 'use_role_id'
   })
-  role: Role;
+  role: UserRole;
 
   @Column({ name: 'use_created_at' })
   @IsDate()

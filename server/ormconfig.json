@@ -1,13 +1,19 @@
 {
-  "type": "postgre",
+  "name": "default",
+  "type": "postgres",
   "host": "localhost",
-  "port": 3306,
-  "username": "test",
-  "password": "test",
-  "database": "test",
+  "port": 5432,
+  "username": "postgres",
+  "password": "postgres",
+  "database": "filet_de_lumiere",
   "synchronize": true,
   "logging": false,
-  "entities": ["src/entity/**/*.ts"],
-  "migrations": ["src/migration/**/*.ts"],
-  "subscribers": ["src/subscriber/**/*.ts"]
+  "entities": ["dist/entities/**/*.js"],
+  "migrations": ["dist/migrations/**/*.js"],
+  "subscribers": ["src/subscriber/**/*.ts"],
+  "cli": {
+    "entitiesDir": "dist/entities",
+    "migrationsDir": "dist/migration",
+    "subscribersDir": "dist/subscriber"
+  }
 }

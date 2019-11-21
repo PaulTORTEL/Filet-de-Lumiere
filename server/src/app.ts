@@ -4,6 +4,7 @@ import CookieParser from 'cookie-parser';
 import Compression from 'compression';
 import router from './api/routes';
 import 'reflect-metadata';
+import { createConnection } from 'typeorm';
 
 const app = Express();
 
@@ -31,6 +32,10 @@ app.use((req, res, next) => {
 });
 
 app.use('/api', router);
+
+createConnection('default')
+  .then(() => console.log('hello'))
+  .catch(e => console.log(e));
 
 app.listen(8080, () => {
   console.clear();

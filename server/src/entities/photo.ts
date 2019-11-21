@@ -1,5 +1,6 @@
 import { IsDate, IsInt, Min } from 'class-validator';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+
 @Entity()
 export class Photo {
   @PrimaryGeneratedColumn({ name: 'pho_id' })
