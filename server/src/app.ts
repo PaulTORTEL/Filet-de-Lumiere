@@ -2,7 +2,7 @@ import Express from 'express';
 import BodyParser from 'body-parser';
 import CookieParser from 'cookie-parser';
 import Compression from 'compression';
-import router from './api/routes';
+import router from './api/modules';
 import 'reflect-metadata';
 
 const app = Express();
