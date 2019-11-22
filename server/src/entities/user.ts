@@ -26,11 +26,11 @@ export class User {
   })
   role: UserRole;
 
-  @Column({ name: 'use_created_at' })
+  @Column({ name: 'use_created_at', default: new Date() })
   @IsDate()
   createdAt: Date;
 
-  @Column({ name: 'use_updated_at' })
+  @Column({ name: 'use_updated_at', nullable: true })
   @IsDate()
   updatedAt: Date;
 }
