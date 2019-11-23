@@ -1,5 +1,6 @@
 import { IsDate, IsInt, Min } from 'class-validator';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import { PhotoLike } from './photo_like';
 
 @Entity()
 export class Photo {
@@ -22,6 +23,13 @@ export class Photo {
   @Min(0)
   @IsInt()
   views: number;
+
+  @OneToMany(
+    type => PhotoLike,
+    photoLike => photoLike.photo,
+    { lazy: true }
+  )
+  likes: Promise<PhotoLike[]>;
 
   @Column({ name: 'pho_created_at' })
   @IsDate()

@@ -1,10 +1,10 @@
-import getDatabaseConn from '../../../db/database';
+import getDbConnection from '../../../db/database';
 import { User } from '../../../entities/user';
 import bcrypt from 'bcryptjs';
 
 export default class AuthService {
   public static async login(email: string, password: string) {
-    const connection = await getDatabaseConn();
+    const connection = await getDbConnection();
 
     const user: User = await connection
       .getRepository(User)
@@ -20,8 +20,6 @@ export default class AuthService {
       } else {
         reject();
       }
-
-      await connection.close();
     });
   }
 }
