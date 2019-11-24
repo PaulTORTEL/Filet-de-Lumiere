@@ -1,7 +1,7 @@
 import { IsDate } from 'class-validator';
-import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
-import { GalleryMetadata } from './galleryMetadata';
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { GalleryCategory } from './galleryCategory';
+import { GalleryMetadata } from './galleryMetadata';
 import { PhotoToGallery } from './photoToGallery';
 
 @Entity()
@@ -23,10 +23,10 @@ export class Gallery {
   @JoinColumn({ name: 'gal_gme_id', referencedColumnName: 'id' })
   metadata: GalleryMetadata;
 
-  @OneToOne(
+  @ManyToOne(
     type => GalleryCategory,
     category => category.gallery,
-    { eager: true }
+    { eager: true, onUpdate: 'CASCADE', onDelete: 'SET NULL' }
   )
   @JoinColumn({ name: 'gal_gca_id', referencedColumnName: 'id' })
   category: Promise<GalleryCategory>;

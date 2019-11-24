@@ -1,8 +1,7 @@
 import { IsDate, IsInt, Min } from 'class-validator';
-import { Column, Entity, PrimaryGeneratedColumn, OneToMany, ManyToMany, JoinTable } from 'typeorm';
-import { PhotoLike } from './photo_like';
-import { Gallery } from './gallery';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { PhotoToGallery } from './photoToGallery';
+import { PhotoLike } from './photo_like';
 
 @Entity()
 export class Photo {
@@ -29,13 +28,14 @@ export class Photo {
   @OneToMany(
     type => PhotoLike,
     photoLike => photoLike.photo,
-    { lazy: true }
+    { lazy: true, onUpdate: 'NO ACTION', onDelete: 'NO ACTION' }
   )
   likes: Promise<PhotoLike[]>;
 
   @OneToMany(
     type => PhotoToGallery,
-    photoToGallery => photoToGallery.photo
+    photoToGallery => photoToGallery.photo,
+    { onUpdate: 'NO ACTION', onDelete: 'NO ACTION' }
   )
   photoToGallery!: PhotoToGallery[];
 

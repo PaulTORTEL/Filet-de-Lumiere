@@ -1,7 +1,6 @@
-import { IsDate, Min, IsBoolean } from 'class-validator';
-import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn, Unique } from 'typeorm';
+import { IsBoolean, IsDate, Min } from 'class-validator';
+import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Gallery } from './gallery';
-import { GalleryCategory } from './galleryCategory';
 
 @Entity()
 export class GalleryMetadata {
@@ -25,7 +24,8 @@ export class GalleryMetadata {
 
   @OneToOne(
     type => Gallery,
-    gallery => gallery.metadata
+    gallery => gallery.metadata,
+    { onUpdate: 'CASCADE', onDelete: 'CASCADE' }
   )
   @JoinColumn({ name: 'gme_gal_id', referencedColumnName: 'id' })
   gallery: Gallery;

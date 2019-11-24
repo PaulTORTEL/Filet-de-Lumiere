@@ -1,6 +1,6 @@
 import { IsDate, IsEmail, MinLength } from 'class-validator';
-import { UserRole } from '../enum/role';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { UserRole } from '../enum/role';
 
 @Entity()
 export class User {

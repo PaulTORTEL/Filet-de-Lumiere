@@ -10,7 +10,8 @@ export class PhotoLike {
 
   @ManyToOne(
     type => Photo,
-    photo => photo.likes
+    photo => photo.likes,
+    { onUpdate: 'CASCADE', onDelete: 'CASCADE' }
   )
   @JoinColumn({ name: 'pli_pho_id', referencedColumnName: 'id' })
   photo: Photo;
