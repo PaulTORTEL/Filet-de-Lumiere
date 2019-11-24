@@ -2,10 +2,9 @@
   "name": "server",
   "version": "0.0.1",
   "description": "",
-  "main": "./dist/app.js",
+  "main": "./src/app.ts",
   "scripts": {
-    "compile": "tsc NODE_ENV=dev && node ./dist/app.js",
-    "start": "nodemon -L \"npm run compile\"",
+    "start": "nodemon -L NODE_ENV=dev ",
     "test": "NODE_ENV=test",
     "lint": "eslint --ext .ts ./src/app.ts"
   },
@@ -22,12 +21,14 @@
     "eslint-plugin-prettier": "^3.1.1",
     "nodemon": "^1.19.4",
     "prettier": "^1.19.1",
+    "ts-node": "^8.5.2",
     "typescript": "^3.7.2"
   },
   "dependencies": {
     "@types/bcryptjs": "^2.4.2",
     "@types/compression": "^1.0.1",
     "@types/cookie-parser": "^1.4.2",
+    "@types/jsonwebtoken": "^8.3.5",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "class-validator": "^0.11.0",
