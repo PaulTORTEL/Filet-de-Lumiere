@@ -1,5 +1,5 @@
 import { IsDate, Min, IsBoolean } from 'class-validator';
-import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn, Unique } from 'typeorm';
 import { Gallery } from './gallery';
 import { GalleryCategory } from './galleryCategory';
 
@@ -11,6 +11,10 @@ export class GalleryMetadata {
   @Column({ name: 'gme_position' })
   @Min(1)
   position: number;
+
+  @Column({ name: 'gme_is_hidden', default: false })
+  @IsBoolean()
+  isHidden: boolean;
 
   @Column({ name: 'gme_is_private', default: false })
   @IsBoolean()
@@ -25,14 +29,6 @@ export class GalleryMetadata {
   )
   @JoinColumn({ name: 'gme_gal_id', referencedColumnName: 'id' })
   gallery: Gallery;
-
-  @OneToOne(
-    type => GalleryCategory,
-    galleryCategory => galleryCategory.galleryMetadata,
-    { lazy: true }
-  )
-  @JoinColumn({ name: 'gme_gca_id', referencedColumnName: 'id' })
-  galleryCategory: Promise<GalleryCategory>;
 
   @Column({ name: 'gme_created_at' })
   @IsDate()
