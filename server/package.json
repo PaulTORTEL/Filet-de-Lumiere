@@ -5,7 +5,7 @@
   "main": "./src/app.ts",
   "scripts": {
     "start": "nodemon -L NODE_ENV=dev ",
-    "test": "NODE_ENV=test",
+    "test": "tsc && jest NODE_ENV=test",
     "lint": "eslint --ext .ts ./src/app.ts"
   },
   "keywords": [],
@@ -19,6 +19,7 @@
     "eslint": "^6.6.0",
     "eslint-config-prettier": "^6.7.0",
     "eslint-plugin-prettier": "^3.1.1",
+    "jest": "^24.9.0",
     "nodemon": "^1.19.4",
     "prettier": "^1.19.1",
     "ts-node": "^8.5.2",
@@ -28,7 +29,9 @@
     "@types/bcryptjs": "^2.4.2",
     "@types/compression": "^1.0.1",
     "@types/cookie-parser": "^1.4.2",
+    "@types/jest": "^24.0.23",
     "@types/jsonwebtoken": "^8.3.5",
+    "@types/supertest": "^2.0.8",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "class-validator": "^0.11.0",
@@ -38,6 +41,7 @@
     "jsonwebtoken": "^8.5.1",
     "pg": "^7.14.0",
     "reflect-metadata": "^0.1.13",
+    "supertest": "^4.0.2",
     "typeorm": "^0.2.20"
   }
 }

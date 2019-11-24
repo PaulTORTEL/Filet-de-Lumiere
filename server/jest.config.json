@@ -1,0 +1,13 @@
+{
+  "verbose": true,
+  "testEnvironment": "node",
+  "coveragePathIgnorePatterns": ["node_modules"],
+  "roots": ["dist/**/*"],
+  "testPathDirs": ["dist/**/*"],
+
+  "moduleFileExtensions": ["ts", "tsx", "js"],
+  "transform": {
+    "\\.(ts|tsx)$": "./node_modules/ts-jest/preprocessor.js"
+  },
+  "testRegex": "/__tests__/.*\\.(ts|tsx|js)$"
+}

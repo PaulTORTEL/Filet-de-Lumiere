@@ -16,7 +16,6 @@ export default class AuthController {
         return res.status(200).json(tokens);
       })
       .catch(e => {
-        console.log(e.toString());
         return ErrorHandler.sendError(res, 401, 'Wrong credentials');
       });
   }
