@@ -19,4 +19,8 @@ export default class AuthController {
         return ErrorHandler.sendError(res, 401, 'Wrong credentials');
       });
   }
+
+  public static async test(req: Request, res: Response) {
+    res.sendStatus(200);
+  }
 }
