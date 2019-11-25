@@ -1,4 +1,4 @@
-import getDbConnection from '../../../db/database';
+import { getDbConnection } from '../../../db/database';
 import { User } from '../../../entities/user';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';

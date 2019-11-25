@@ -4,9 +4,15 @@
   "description": "",
   "main": "./src/app.ts",
   "scripts": {
-    "start": "nodemon -L NODE_ENV=dev ",
-    "test": "tsc && jest NODE_ENV=test",
+    "start": "nodemon -L",
+    "test": "SET NODE_ENV=test && tsc && jest",
     "lint": "eslint --ext .ts ./src/app.ts"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
   },
   "keywords": [],
   "author": "Paul Tortel",
@@ -22,6 +28,7 @@
     "jest": "^24.9.0",
     "nodemon": "^1.19.4",
     "prettier": "^1.19.1",
+    "ts-jest": "^24.2.0",
     "ts-node": "^8.5.2",
     "typescript": "^3.7.2"
   },
