@@ -1,7 +1,7 @@
 import { IsDate, IsInt, Min } from 'class-validator';
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { PhotoToGallery } from './photoToGallery';
-import { PhotoLike } from './photo_like';
+import { PhotoToGallery } from './photo-to-gallery';
+import { PhotoLike } from './photo-like';
 
 @Entity()
 export class Photo {

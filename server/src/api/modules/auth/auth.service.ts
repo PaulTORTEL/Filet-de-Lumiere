@@ -10,7 +10,7 @@ export default class AuthService {
    * @param email
    * @param password
    */
-  public static async login(email: string, password: string): Promise<Object> {
+  public static async login(email: string, password: string): Promise<object | void> {
     const connection = await getDbConnection();
 
     const user = await connection
@@ -20,16 +20,17 @@ export default class AuthService {
       .where('user.email = :email', { email })
       .getOne();
 
-    return new Promise(async (resolve, reject) => {
+    return new Promise((resolve, reject) => {
       if (user) {
-        const success = await bcrypt.compare(password, user.password);
-        delete user.password;
-        const accessToken = jwt.sign({ user: JSON.stringify(user) }, Config.secret, { expiresIn: Config.expiration });
-        const refreshToken = jwt.sign({}, Config.refreshSecret, {
-          expiresIn: Config.refreshExpiration
-        });
+        bcrypt.compare(password, user.password, (err, success) => {
+          delete user.password;
+          const accessToken = jwt.sign({ user: JSON.stringify(user) }, Config.secret, { expiresIn: Config.expiration });
+          const refreshToken = jwt.sign({}, Config.refreshSecret, {
+            expiresIn: Config.refreshExpiration
+          });
 
-        success === true ? resolve({ accessToken, refreshToken }) : reject();
+          success === true ? resolve({ accessToken, refreshToken }) : reject(err);
+        });
       } else {
         reject();
       }

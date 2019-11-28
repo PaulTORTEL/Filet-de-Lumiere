@@ -1,8 +1,8 @@
 import { IsDate } from 'class-validator';
 import { Column, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { GalleryCategory } from './galleryCategory';
-import { GalleryMetadata } from './galleryMetadata';
-import { PhotoToGallery } from './photoToGallery';
+import { GalleryCategory } from './gallery-category';
+import { GalleryMetadata } from './gallery-metadata';
+import { PhotoToGallery } from './photo-to-gallery';
 
 @Entity()
 export class Gallery {

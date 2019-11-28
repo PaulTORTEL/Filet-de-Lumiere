@@ -1,26 +1,23 @@
 import { Request, Response } from 'express';
-import ErrorHandler from '../../utils/errorHandler';
+import ErrorHandler from '../../utils/error-handler';
 import AuthService from './auth.service';
+import { UNAUTHORIZED, OK } from '../../utils/status-code';
 
 export default class AuthController {
-  public static async login(req: Request, res: Response) {
+  public static async login(req: Request, res: Response): Promise<Response | void> {
     const { email, password } = req.body;
 
     // If no email nor password
     if (!email || !password) {
-      return ErrorHandler.sendError(res, 401);
+      return ErrorHandler.sendError(res, UNAUTHORIZED);
     }
     // Try matching credentials
     AuthService.login(email, password)
       .then(tokens => {
-        return res.status(200).json(tokens);
+        return res.status(OK).json(tokens);
       })
-      .catch(e => {
-        return ErrorHandler.sendError(res, 401, 'Wrong credentials');
+      .catch(() => {
+        return ErrorHandler.sendError(res, UNAUTHORIZED, 'Wrong credentials');
       });
-  }
-
-  public static async test(req: Request, res: Response) {
-    res.sendStatus(200);
   }
 }

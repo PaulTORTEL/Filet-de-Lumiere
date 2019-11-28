@@ -1,13 +1,15 @@
 import Express from 'express';
 import AuthController from './auth.controller';
-import AuthMiddleware from '../../middlewares/auth/auth.middleware';
 
 const authRouter = Express.Router();
 
 /**
- * api/auth/login
+ * GET: /api/auth/login
+ * Sign-in a user
+ * No authentication verification process
+ * 401: Unauthorized
+ * OK (200)
  */
 authRouter.post('/login', AuthController.login);
-authRouter.get('/test', AuthMiddleware.isAuthenticated, AuthController.test);
 
 export default authRouter;
