@@ -10,7 +10,7 @@ export default class AuthService {
    * @param email
    * @param password
    */
-  public static async login(email: string, password: string): Promise<object | void> {
+  public static async login(email: string, password: string): Promise<object | number> {
     const connection = await getDbConnection();
 
     const user = await connection
@@ -29,10 +29,10 @@ export default class AuthService {
             expiresIn: Config.refreshExpiration
           });
 
-          success === true ? resolve({ accessToken, refreshToken }) : reject(err);
+          success === true ? resolve({ accessToken, refreshToken }) : reject(401);
         });
       } else {
-        reject();
+        reject(404);
       }
     });
   }

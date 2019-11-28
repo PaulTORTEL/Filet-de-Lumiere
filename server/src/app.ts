@@ -30,7 +30,4 @@ app.use((req, res, next) => {
 
 app.use('/api', router);
 
-app.listen(3000, () => {
-  console.clear();
-  console.log('*** FILET DE LUMIERE API ***');
-});
+export default app;

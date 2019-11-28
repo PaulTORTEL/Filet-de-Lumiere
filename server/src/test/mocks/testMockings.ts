@@ -1,4 +1,4 @@
-export function mockResponse() {
+export function mockResponse(): {} {
   const res: any = {};
   res.status = jest.fn().mockReturnValue(res);
   res.sendStatus = jest.fn().mockReturnValue(res);
@@ -6,14 +6,14 @@ export function mockResponse() {
   return res;
 }
 
-export function mockRequest() {
+export function mockRequest(): {} {
   const req: any = {
-    body: {},
+    body: {}
   };
   return req;
 }
 
-export function mockNext() {
+export function mockNext(): {} {
   let next: any = {};
   next = jest.fn().mockReturnValue(next);
 

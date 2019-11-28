@@ -6,7 +6,6 @@ import { UNAUTHORIZED, OK } from '../../utils/status-code';
 export default class AuthController {
   public static async login(req: Request, res: Response): Promise<Response | void> {
     const { email, password } = req.body;
-
     // If no email nor password
     if (!email || !password) {
       return ErrorHandler.sendError(res, UNAUTHORIZED);
@@ -16,8 +15,8 @@ export default class AuthController {
       .then(tokens => {
         return res.status(OK).json(tokens);
       })
-      .catch(() => {
-        return ErrorHandler.sendError(res, UNAUTHORIZED, 'Wrong credentials');
+      .catch(code => {
+        return ErrorHandler.sendError(res, code, 'Wrong credentials');
       });
   }
 }

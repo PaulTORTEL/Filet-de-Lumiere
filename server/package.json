@@ -2,11 +2,11 @@
   "name": "server",
   "version": "0.0.1",
   "description": "",
-  "main": "./src/app.ts",
+  "main": "./src/server.ts",
   "scripts": {
     "start": "nodemon -L",
     "test": "SET NODE_ENV=test&& tsc && jest",
-    "lint": "eslint --ext .ts ./src/app.ts"
+    "lint": "eslint --ext .ts ./src/server.ts"
   },
   "jest": {
     "testEnvironment": "node",
