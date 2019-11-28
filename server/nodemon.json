@@ -2,5 +2,5 @@
   "ignore": ["node_modules/**/node_modules", "dist/*", "*.vscode", ".git"],
   "watch": ["src/*"],
   "ext": "ts",
-  "exec": "SET NODE_ENV=dev && tsc && ts-node ./src/app.ts"
+  "exec": "SET NODE_ENV=dev&& tsc && ts-node ./src/app.ts"
 }

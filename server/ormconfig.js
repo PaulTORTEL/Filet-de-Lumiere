@@ -28,11 +28,9 @@ module.exports = [
     database: 'filet_de_lumiere_test',
     synchronize: true,
     logging: false,
-    entities: ['src/entities/**/*.ts'],
-    migrations: ['dist/migrations/**/*.js'],
-    subscribers: ['src/subscriber/**/*.ts'],
+    entities: ['dist/src/entities/**/*{.ts,.js}'],
     cli: {
-      entitiesDir: 'src/entities',
+      entitiesDir: 'dist/src/entities',
       migrationsDir: 'dist/migration',
       subscribersDir: 'dist/subscriber'
     }

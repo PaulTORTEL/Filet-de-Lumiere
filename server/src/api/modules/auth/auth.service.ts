@@ -13,7 +13,7 @@ export default class AuthService {
   public static async login(email: string, password: string): Promise<Object> {
     const connection = await getDbConnection();
 
-    const user: User = await connection
+    const user = await connection
       .getRepository(User)
       .createQueryBuilder('user')
       .select(['user.id', 'user.password', 'user.pseudo', 'user.role'])
