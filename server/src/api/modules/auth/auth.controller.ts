@@ -6,7 +6,7 @@ import { UNAUTHORIZED, OK } from '../../utils/status-code';
 export default class AuthController {
   public static async login(req: Request, res: Response): Promise<Response | void> {
     const { email, password } = req.body;
-    // If no email nor password
+    // If no email or no password
     if (!email || !password) {
       return ErrorHandler.sendError(res, UNAUTHORIZED);
     }

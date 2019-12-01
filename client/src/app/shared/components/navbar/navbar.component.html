@@ -1,0 +1,50 @@
+<div id="burger">
+  <i nz-icon [nzType]="'menu'" (click)="onBurgerClick()"></i>
+</div>
+
+<div id="header">
+  <div nz-row>
+    <div nz-col nzXs="24" nzSm="24" nzMd="5" nzLg="5" nzXl="4">
+      <div class="logo">
+        <a href="">
+          <img
+            src="../../../../assets/logo.png"
+            alt="filetdelumiere"
+            class="logo"
+          />
+        </a>
+      </div>
+    </div>
+    <div nz-col nzXs="0" nzSm="0" nzMd="15" nzLg="16" nzXl="16">
+      <ul nz-menu nzTheme="dark" nzMode="horizontal" class="header-menu">
+        <li nz-menu-item nzSelected>Galeries</li>
+        <li nz-menu-item>Livre d'Or</li>
+        <li nz-menu-item>Articles</li>
+        <li nz-menu-item>A propos</li>
+        <li nz-menu-item>Contact</li>
+      </ul>
+    </div>
+    <div nz-col nzXs="0" nzSm="0" nzMd="3" nzLg="3" nzXl="4" class="right">
+      <ul nz-menu nzTheme="dark" nzMode="horizontal" class="header-menu">
+        <li nz-menu-item>
+          <i nz-icon nzType="user"></i>
+          Connexion
+        </li>
+      </ul>
+    </div>
+    <div nz-col id="menu-burger" *ngIf="burger" nzMd="0">
+      <nz-divider></nz-divider>
+      <ul nz-menu nzMode="inline" nzTheme="dark">
+        <li nz-menu-item>Galeries</li>
+        <li nz-menu-item>Livre d'Or</li>
+        <li nz-menu-item>Articles</li>
+        <li nz-menu-item>A propos</li>
+        <li nz-menu-item>Contact</li>
+        <li nz-menu-item>
+          <i nz-icon nzType="user"></i>
+          Connexion
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

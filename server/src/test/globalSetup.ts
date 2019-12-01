@@ -19,7 +19,7 @@ async function truncateTables(connection: Connection): Promise<void> {
   $$ LANGUAGE plpgsql;
   `);
 
-  await connection.query("SELECT truncate_tables('postgres')");
+  await connection.query('SELECT truncate_tables(\'postgres\')');
 }
 
 export default async function globalSetup(): Promise<void> {
