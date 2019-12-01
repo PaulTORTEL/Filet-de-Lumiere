@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { fr_FR, NgZorroAntdModule, NZ_I18N } from "ng-zorro-antd";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
+import { ReactiveFormsModule } from "@angular/forms";
 
 registerLocaleData(fr);
 
@@ -19,7 +20,8 @@ registerLocaleData(fr);
     NgZorroAntdModule,
     FormsModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ReactiveFormsModule
   ],
   providers: [{ provide: NZ_I18N, useValue: fr_FR }],
   bootstrap: [AppComponent]

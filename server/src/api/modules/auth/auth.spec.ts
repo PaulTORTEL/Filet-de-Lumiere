@@ -19,7 +19,7 @@ describe('Authentication verification processes', () => {
   it('should return a JWT when login is successful', async done => {
     authRequester
       .post('/api/auth/login')
-      .send({ email: 'john.doe@test.com', password: 'admin123*' })
+      .send({ username: 'John Doe', password: 'admin123*' })
       .set('Accept', 'application/json')
       .expect(OK)
       .then(response => {
@@ -36,7 +36,7 @@ describe('Authentication verification processes', () => {
   it('should block the request when the password is incorrect', async done => {
     authRequester
       .post('/api/auth/login')
-      .send({ email: 'john.doe@test.com', password: 'wrong password' })
+      .send({ username: 'John Doe', password: 'wrong password' })
       .set('Accept', 'application/json')
       .expect(UNAUTHORIZED)
       .then(() => done())
@@ -48,7 +48,7 @@ describe('Authentication verification processes', () => {
   it('should block the request when the email is unknown', async done => {
     authRequester
       .post('/api/auth/login')
-      .send({ email: 'unknown.email@bug.com', password: 'wrong password' })
+      .send({ username: 'unknown', password: 'wrong password' })
       .set('Accept', 'application/json')
       .expect(NOTFOUND)
       .then(() => done())

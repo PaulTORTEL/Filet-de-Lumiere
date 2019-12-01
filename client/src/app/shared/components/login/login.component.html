@@ -1,0 +1,60 @@
+<div>
+  <nz-alert
+    nzType="error"
+    nzMessage="Le nom d'utilisateur et/ou le mot de passe sont incorrects"
+    nzShowIcon
+    *ngIf="error"
+  ></nz-alert>
+  <form
+    nz-form
+    [formGroup]="loginForm"
+    class="login-form"
+    (ngSubmit)="handleConnect()"
+  >
+    <nz-form-item>
+      <nz-form-control
+        nzErrorTip="Le nom d'utilisateur est trop court"
+        nzHasFeedback
+      >
+        <nz-input-group nzPrefixIcon="user">
+          <input
+            type="text"
+            nz-input
+            formControlName="username"
+            placeholder="Nom d'utilisateur"
+            required
+          />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control
+        nzErrorTip="Le mot de passe est trop court"
+        nzHasFeedback
+      >
+        <nz-input-group nzPrefixIcon="lock">
+          <input
+            type="password"
+            nz-input
+            formControlName="password"
+            placeholder="Mot de passe"
+            required
+          />
+        </nz-input-group>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+      <nz-form-control>
+        <button
+          nz-button
+          class="success-btn"
+          [nzLoading]="isConnecting"
+          type="submit"
+          [disabled]="!loginForm.valid"
+        >
+          Se connecter
+        </button>
+      </nz-form-control>
+    </nz-form-item>
+  </form>
+</div>

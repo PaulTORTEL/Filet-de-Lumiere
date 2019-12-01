@@ -26,7 +26,7 @@
     </div>
     <div nz-col nzXs="0" nzSm="0" nzMd="3" nzLg="3" nzXl="4" class="right">
       <ul nz-menu nzTheme="dark" nzMode="horizontal" class="header-menu">
-        <li nz-menu-item>
+        <li nz-menu-item (click)="showModalLogin()">
           <i nz-icon nzType="user"></i>
           Connexion
         </li>
@@ -40,7 +40,7 @@
         <li nz-menu-item>Articles</li>
         <li nz-menu-item>A propos</li>
         <li nz-menu-item>Contact</li>
-        <li nz-menu-item>
+        <li nz-menu-item (click)="showModalLogin()">
           <i nz-icon nzType="user"></i>
           Connexion
         </li>

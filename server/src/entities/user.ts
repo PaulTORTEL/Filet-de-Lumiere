@@ -7,8 +7,8 @@ export class User {
   @PrimaryGeneratedColumn({ name: 'use_id' })
   id: number;
 
-  @Column({ name: 'use_pseudo' })
-  pseudo: string;
+  @Column({ name: 'use_username' })
+  username: string;
 
   @Column({ name: 'use_email' })
   @IsEmail()

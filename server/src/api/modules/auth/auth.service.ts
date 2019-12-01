@@ -7,17 +7,17 @@ import Config from '../../../../config';
 export default class AuthService {
   /**
    * Performs the login process
-   * @param email
+   * @param username
    * @param password
    */
-  public static async login(email: string, password: string): Promise<object | number> {
+  public static async login(username: string, password: string): Promise<object | number> {
     const connection = await getDbConnection();
 
     const user = await connection
       .getRepository(User)
       .createQueryBuilder('user')
-      .select(['user.id', 'user.password', 'user.pseudo', 'user.role'])
-      .where('user.email = :email', { email })
+      .select(['user.id', 'user.password', 'user.username', 'user.role'])
+      .where('user.username = :username', { username })
       .getOne();
 
     return new Promise((resolve, reject) => {

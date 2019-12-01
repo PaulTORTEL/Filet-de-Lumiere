@@ -5,7 +5,7 @@ import { getDbConnection } from '../../db/database';
 
 export class UserFactory {
   public static async create(
-    pseudo: string,
+    username: string,
     email: string,
     password: string,
     role: UserRole,
@@ -13,7 +13,7 @@ export class UserFactory {
     updatedAt?: Date
   ): Promise<User> {
     const user = new User();
-    user.pseudo = pseudo;
+    user.username = username;
     user.email = email;
     user.role = role;
 
