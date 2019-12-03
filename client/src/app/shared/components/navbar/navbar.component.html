@@ -25,8 +25,15 @@
       </ul>
     </div>
     <div nz-col nzXs="0" nzSm="0" nzMd="3" nzLg="3" nzXl="4" class="right">
-      <ul nz-menu nzTheme="dark" nzMode="horizontal" class="header-menu">
-        <li nz-menu-item (click)="showModalLogin()">
+      <ul
+        nz-menu
+        [nzSelectable]="false"
+        nzTheme="dark"
+        nzMode="horizontal"
+        class="header-menu"
+        *ngIf="role === undefined"
+      >
+        <li nz-menu-item (click)="showModalLogin(connectionItem)">
           <i nz-icon nzType="user"></i>
           Connexion
         </li>

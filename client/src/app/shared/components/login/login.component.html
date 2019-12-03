@@ -1,11 +1,4 @@
 <div>
-  <nz-alert
-    nzType="error"
-    nzMessage="Le nom d'utilisateur et/ou le mot de passe sont incorrects"
-    nzShowIcon
-    *ngIf="error"
-    class="error-form"
-  ></nz-alert>
   <form
     nz-form
     [formGroup]="loginForm"
@@ -44,6 +37,13 @@
         </nz-input-group>
       </nz-form-control>
     </nz-form-item>
+    <nz-alert
+      nzType="error"
+      nzMessage="Le nom d'utilisateur et/ou le mot de passe sont incorrects"
+      nzShowIcon
+      *ngIf="error"
+      class="error-form"
+    ></nz-alert>
     <nz-form-item>
       <nz-form-control class="form-controls">
         <button

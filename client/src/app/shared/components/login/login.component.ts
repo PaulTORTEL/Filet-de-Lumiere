@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { AuthService } from "../../services/auth.service";
 import { NzModalRef, NzMessageService } from "ng-zorro-antd";
 import { INTERNALERROR } from "../../../utils/http-utils";
+import { UserService } from "../../services/user.service";
 
 @Component({
   selector: "app-login",
@@ -19,7 +20,8 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private authService: AuthService,
     private modal: NzModalRef,
-    private message: NzMessageService
+    private message: NzMessageService,
+    private userService: UserService
   ) {}
 
   ngOnInit(): void {
@@ -42,9 +44,14 @@ export class LoginComponent implements OnInit {
       this.authService
         .login(this.loginForm.value)
         .then(() => {
-          this.message.create("success", "Bienvenue, Admin !", {
-            nzDuration: 1000
-          });
+          this.message.create(
+            "success",
+            `Bienvenue, ${this.userService.getUserFromStorage().username}`,
+            {
+              nzDuration: 1000
+            }
+          );
+          this.authService.getRole();
           this.destroyModal();
         })
         .catch(errCode => {

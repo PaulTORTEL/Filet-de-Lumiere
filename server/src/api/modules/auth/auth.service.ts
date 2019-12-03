@@ -11,13 +11,13 @@ export default class AuthService {
    * @param username
    * @param password
    */
-  public static async login(username: string, password: string): Promise<TokenUser | number> {
+  public static async login(username: string, password: string): Promise<TokenUser> {
     const connection = await getDbConnection();
 
     const user = await connection
       .getRepository(User)
       .createQueryBuilder('user')
-      .select(['user.id', 'user.password', 'user.username', 'user.role'])
+      .select(['user.id', 'user.password', 'user.username'])
       .where('user.username = :username', { username })
       .getOne();
 
@@ -36,6 +36,17 @@ export default class AuthService {
         });
       } else {
         reject(404);
+      }
+    });
+  }
+
+  public static isUserConnected(token: string): Promise<void> {
+    return new Promise((resolve, reject) => {
+      try {
+        jwt.verify(token, Config.secret);
+        resolve();
+      } catch (err) {
+        reject();
       }
     });
   }

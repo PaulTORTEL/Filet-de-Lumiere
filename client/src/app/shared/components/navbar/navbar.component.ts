@@ -1,6 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { NzModalService } from "ng-zorro-antd";
 import { LoginComponent } from "../login/login.component";
+import { UserService } from "../../services/user.service";
+import { AuthService } from "../../services/auth.service";
+import { UserRole } from "../../../utils/role-utils";
 
 @Component({
   selector: "app-navbar",
@@ -9,9 +12,21 @@ import { LoginComponent } from "../login/login.component";
 })
 export class NavbarComponent implements OnInit {
   burger = false;
-  constructor(private modalService: NzModalService) {}
+  role: UserRole;
 
-  ngOnInit() {}
+  public roleType = UserRole;
+
+  constructor(
+    private modalService: NzModalService,
+    private authService: AuthService
+  ) {}
+
+  ngOnInit() {
+    this.authService.role$.subscribe(role => {
+      this.role = role;
+    });
+    this.authService.getRole();
+  }
 
   showModalLogin(): void {
     this.modalService
@@ -21,7 +36,7 @@ export class NavbarComponent implements OnInit {
         nzFooter: null
       })
       .afterClose.subscribe(() => {
-        this.onBurgerClick();
+        this.burger = false;
       });
   }
 

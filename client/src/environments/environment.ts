@@ -8,7 +8,8 @@ export const environment = {
   baseUrl: "http://localhost:3000/",
   API_ENDPOINTS: {
     LOGIN: "api/auth/login",
-    DISCONNECT: "api/auth/disconnect"
+    DISCONNECT: "api/auth/disconnect",
+    ROLE: "api/auth/role"
   }
 };
 

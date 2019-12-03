@@ -8,3 +8,9 @@ export interface TokenUser {
     username: string;
   };
 }
+
+export interface DecodedAuthJwt {
+  user: string;
+  iat: number;
+  exp: number;
+}
