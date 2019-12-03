@@ -40,6 +40,9 @@ export class NavbarComponent implements OnInit {
       });
   }
 
+  //TODO: settings for all users ? (and non auth ones ?) to change language, theme..
+  //TODO: generate component for auth user
+
   onBurgerClick() {
     this.burger = !this.burger;
   }

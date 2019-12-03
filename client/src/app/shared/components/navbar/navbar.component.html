@@ -47,7 +47,7 @@
         <li nz-menu-item>Articles</li>
         <li nz-menu-item>A propos</li>
         <li nz-menu-item>Contact</li>
-        <li nz-menu-item (click)="showModalLogin()">
+        <li nz-menu-item *ngIf="role === undefined" (click)="showModalLogin()">
           <i nz-icon nzType="user"></i>
           Connexion
         </li>

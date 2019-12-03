@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
             "success",
             `Bienvenue, ${this.userService.getUserFromStorage().username}`,
             {
-              nzDuration: 1000
+              nzDuration: 2000
             }
           );
           this.authService.getRole();
