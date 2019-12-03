@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { AuthService } from "../../services/auth.service";
 import { NzModalRef, NzMessageService } from "ng-zorro-antd";
+import { INTERNALERROR } from "../../../utils/http-utils";
 
 @Component({
   selector: "app-login",
@@ -41,18 +42,23 @@ export class LoginComponent implements OnInit {
       this.authService
         .login(this.loginForm.value)
         .then(() => {
-          this.createMessage("success");
+          this.message.create("success", "Bienvenue, Admin !", {
+            nzDuration: 1000
+          });
           this.destroyModal();
         })
         .catch(errCode => {
-          this.error = true;
+          if (errCode === INTERNALERROR) {
+            this.message.create(
+              "error",
+              "Une erreur côté serveur vient de se produire"
+            );
+          } else {
+            this.error = true;
+          }
         })
         .finally(() => (this.isConnecting = false));
     }
-  }
-
-  createMessage(type: string): void {
-    this.message.create(type, `Bienvenue, Admin !`);
   }
 
   destroyModal(): void {

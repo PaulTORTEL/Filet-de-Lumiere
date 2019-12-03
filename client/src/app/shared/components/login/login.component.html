@@ -4,6 +4,7 @@
     nzMessage="Le nom d'utilisateur et/ou le mot de passe sont incorrects"
     nzShowIcon
     *ngIf="error"
+    class="error-form"
   ></nz-alert>
   <form
     nz-form
@@ -44,10 +45,10 @@
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>
-      <nz-form-control>
+      <nz-form-control class="form-controls">
         <button
           nz-button
-          class="success-btn"
+          nzType="primary"
           [nzLoading]="isConnecting"
           type="submit"
           [disabled]="!loginForm.valid"

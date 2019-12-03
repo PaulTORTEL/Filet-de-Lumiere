@@ -14,11 +14,15 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {}
 
   showModalLogin(): void {
-    this.modalService.create({
-      nzTitle: "Connexion",
-      nzContent: LoginComponent,
-      nzFooter: null
-    });
+    this.modalService
+      .create({
+        nzTitle: "Connexion",
+        nzContent: LoginComponent,
+        nzFooter: null
+      })
+      .afterClose.subscribe(() => {
+        this.onBurgerClick();
+      });
   }
 
   onBurgerClick() {

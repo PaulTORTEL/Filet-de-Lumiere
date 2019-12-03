@@ -1,26 +1,8 @@
-.success-btn {
-  background-color: #21ba45;
-  border-color: #21ba45;
-  color: white;
-  &:hover {
-    background-color: #16ab39;
-    border-color: #16ab39;
-    color: white;
-  }
-
-  &:active,
-  &:focus {
-    background-color: #16ab39;
-    border-color: #16ab39;
-    color: white;
-  }
-}
-
 .ng-valid[required],
 .ng-valid.required {
-  border-left: 5px solid #42a948;
+  border-left: 5px solid #5dc828;
 }
 
 .ng-invalid:not(form) {
-  border-left: 5px solid #a94442;
+  border-left: 5px solid #f5222d;
 }
