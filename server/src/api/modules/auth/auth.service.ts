@@ -3,6 +3,7 @@ import { User } from '../../../entities/user';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import Config from '../../../../config';
+import { TokenUser } from '../../utils/model-utils';
 
 export default class AuthService {
   /**
@@ -10,7 +11,7 @@ export default class AuthService {
    * @param username
    * @param password
    */
-  public static async login(username: string, password: string): Promise<object | number> {
+  public static async login(username: string, password: string): Promise<TokenUser | number> {
     const connection = await getDbConnection();
 
     const user = await connection
@@ -29,7 +30,9 @@ export default class AuthService {
             expiresIn: Config.refreshExpiration
           });
 
-          success === true ? resolve({ accessToken, refreshToken }) : reject(401);
+          success === true
+            ? resolve({ user: { id: user.id, username: user.username }, tokens: { accessToken, refreshToken } })
+            : reject(401);
         });
       } else {
         reject(404);
