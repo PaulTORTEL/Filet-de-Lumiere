@@ -1,8 +1,8 @@
 import { Request, Response } from 'express';
 import ErrorHandler from '../../utils/error-handler';
 import AuthService from './auth.service';
-import { UNAUTHORIZED, OK, NOTFOUND } from '../../utils/status-code';
-import { TokenUser } from '../../utils/model-utils';
+import { UNAUTHORIZED, OK, NOTFOUND, INTERNALERROR } from '../../utils/status-code';
+import { TokenUser, DecodedAuthJwt } from '../../utils/model-utils';
 import { User } from '../../../entities/user';
 import UserService from '../user/user.service';
 import { UserRole } from '../../../enum/role';
@@ -25,7 +25,28 @@ export default class AuthController {
           .json(data.user);
       })
       .catch(code => {
-        return ErrorHandler.sendError(res, code, 'Wrong credentials');
+        ErrorHandler.sendError(res, code, 'Wrong credentials');
+      });
+  }
+
+  public static async disconnect(req: Request, res: Response): Promise<Response | void> {
+    const accessToken = req.cookies.access_token;
+
+    if (!accessToken) {
+      return ErrorHandler.sendError(res, UNAUTHORIZED, 'No access token provided');
+    }
+
+    AuthService.isUserConnected(accessToken)
+      .then(() => {})
+      .catch(() => {
+        // Invalid token, or expired one
+      })
+      .finally(() => {
+        return res
+          .status(OK)
+          .cookie('access_token', '', { httpOnly: true, expires: new Date(Date.now() - 1) })
+          .cookie('refresh_token', '', { httpOnly: true, expires: new Date(Date.now() - 1) })
+          .json();
       });
   }
 
@@ -42,7 +63,7 @@ export default class AuthController {
         return res.status(OK).json(role);
       })
       .catch(code => {
-        return ErrorHandler.sendError(res, code);
+        ErrorHandler.sendError(res, code);
       });
   }
 }

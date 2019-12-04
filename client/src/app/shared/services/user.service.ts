@@ -7,11 +7,15 @@ import { User } from "../models/user";
 export class UserService {
   constructor() {}
 
-  public saveUserInStorage(user: User): void {
+  saveUserInStorage(user: User): void {
     window.sessionStorage.setItem("user", JSON.stringify(user));
   }
 
-  public getUserFromStorage(): User {
+  getUserFromStorage(): User {
     return JSON.parse(window.sessionStorage.getItem("user")) as User;
+  }
+
+  clearUserFromStorage(): void {
+    window.sessionStorage.removeItem("user");
   }
 }

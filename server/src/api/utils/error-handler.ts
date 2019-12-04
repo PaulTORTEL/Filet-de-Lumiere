@@ -5,7 +5,6 @@ export default class ErrorHandler {
     if (message) {
       return res.status(code).json(message);
     }
-
     return res.sendStatus(code);
   }
 }

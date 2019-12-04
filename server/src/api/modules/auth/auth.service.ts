@@ -1,9 +1,9 @@
-import { getDbConnection } from '../../../db/database';
-import { User } from '../../../entities/user';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import Config from '../../../../config';
-import { TokenUser } from '../../utils/model-utils';
+import { getDbConnection } from '../../../db/database';
+import { User } from '../../../entities/user';
+import { DecodedAuthJwt, TokenUser } from '../../utils/model-utils';
 
 export default class AuthService {
   /**
@@ -40,14 +40,15 @@ export default class AuthService {
     });
   }
 
-  public static isUserConnected(token: string): Promise<void> {
+  public static isUserConnected(token: string): Promise<DecodedAuthJwt> {
     return new Promise((resolve, reject) => {
       try {
-        jwt.verify(token, Config.secret);
-        resolve();
+        const decoded = jwt.verify(token, Config.secret) as DecodedAuthJwt;
+        resolve(decoded);
       } catch (err) {
         reject();
       }
+      reject();
     });
   }
 }

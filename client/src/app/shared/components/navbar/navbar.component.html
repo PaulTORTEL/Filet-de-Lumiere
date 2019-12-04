@@ -38,6 +38,10 @@
           Connexion
         </li>
       </ul>
+      <app-user-nav-card
+        *ngIf="role !== undefined"
+        class="main-user-card"
+      ></app-user-nav-card>
     </div>
     <div nz-col id="menu-burger" *ngIf="burger" nzMd="0">
       <nz-divider></nz-divider>

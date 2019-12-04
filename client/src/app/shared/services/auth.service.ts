@@ -35,6 +35,21 @@ export class AuthService {
     });
   }
 
+  disconnect(): Promise<boolean> {
+    const url = environment.baseUrl + environment.API_ENDPOINTS.DISCONNECT;
+    return new Promise<boolean>((resolve, reject) => {
+      this.http.post<User>(url, {}, httpOptions).subscribe(
+        () => {
+          this.userService.clearUserFromStorage();
+          resolve(true);
+        },
+        err => {
+          reject(err.status);
+        }
+      );
+    });
+  }
+
   setRole(role: UserRole): void {
     this.roleSource.next(role);
   }
