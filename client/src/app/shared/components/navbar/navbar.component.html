@@ -1,5 +1,15 @@
 <div id="burger">
-  <i nz-icon [nzType]="'menu'" (click)="onBurgerClick()"></i>
+  <app-notification
+    id="burger-notif"
+    class="burger-nav-item"
+    *ngIf="role !== undefined"
+  ></app-notification>
+  <i
+    class="burger-nav-item"
+    nz-icon
+    [nzType]="'menu'"
+    (click)="onBurgerClick()"
+  ></i>
 </div>
 
 <div id="header">
@@ -15,7 +25,7 @@
         </a>
       </div>
     </div>
-    <div nz-col nzXs="0" nzSm="0" nzMd="15" nzLg="16" nzXl="16">
+    <div nz-col nzXs="0" nzSm="0" nzMd="15" nzLg="15" nzXl="16">
       <ul nz-menu nzTheme="dark" nzMode="horizontal" class="header-menu">
         <li nz-menu-item nzSelected>Galeries</li>
         <li nz-menu-item>Livre d'Or</li>
@@ -24,7 +34,7 @@
         <li nz-menu-item>Contact</li>
       </ul>
     </div>
-    <div nz-col nzXs="0" nzSm="0" nzMd="3" nzLg="3" nzXl="4" class="right">
+    <div nz-col nzXs="0" nzSm="0" nzMd="4" nzLg="4" nzXl="4" class="right">
       <ul
         nz-menu
         [nzSelectable]="false"
@@ -54,6 +64,12 @@
         <li nz-menu-item *ngIf="role === undefined" (click)="showModalLogin()">
           <i nz-icon nzType="user"></i>
           Connexion
+        </li>
+        <li *ngIf="role !== undefined" nz-menu-item>
+          <i nz-icon nzType="control"></i>Administration
+        </li>
+        <li *ngIf="role !== undefined" nz-menu-item (click)="onDisconnect()">
+          <i nz-icon nzType="logout"></i>Se déconnecter
         </li>
       </ul>
     </div>

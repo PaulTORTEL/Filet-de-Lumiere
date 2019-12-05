@@ -1,31 +1,4 @@
-<nz-badge
-  id="notif-badge"
-  [nzCount]="7"
-  [nzOverflowCount]="10"
-  [nzOffset]="[0, -5]"
->
-  <button
-    nz-button
-    nzType="link"
-    nzShape="circle"
-    nzGhost
-    nz-dropdown
-    nzTrigger="click"
-    [nzDropdownMenu]="notif"
-    nzPlacement="bottomRight"
-    [nzSize]="large"
-  >
-    <i nz-icon nzType="bell" id="notif-bell"></i>
-  </button>
-</nz-badge>
-
-<nz-dropdown-menu #notif="nzDropdownMenu">
-  <ul nz-menu>
-    <li nz-menu-item>menu1 1st menu item</li>
-    <li nz-menu-item>menu1 2nd menu item</li>
-    <li nz-menu-item>menu1 3rd menu item</li>
-  </ul>
-</nz-dropdown-menu>
+<app-notification></app-notification>
 
 <a nz-dropdown nzTrigger="click" [nzDropdownMenu]="menu">
   {{ username }}
