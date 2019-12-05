@@ -51,9 +51,10 @@
       <app-user-nav-card
         *ngIf="role !== undefined"
         class="main-user-card"
+        [mode]="'wide'"
       ></app-user-nav-card>
     </div>
-    <div nz-col id="menu-burger" *ngIf="burger" nzMd="0">
+    <div nz-col id="menu-burger" *ngIf="burger">
       <nz-divider></nz-divider>
       <ul nz-menu nzMode="inline" nzTheme="dark">
         <li nz-menu-item>Galeries</li>
@@ -65,12 +66,10 @@
           <i nz-icon nzType="user"></i>
           Connexion
         </li>
-        <li *ngIf="role !== undefined" nz-menu-item>
-          <i nz-icon nzType="control"></i>Administration
-        </li>
-        <li *ngIf="role !== undefined" nz-menu-item (click)="onDisconnect()">
-          <i nz-icon nzType="logout"></i>Se déconnecter
-        </li>
+        <app-user-nav-card
+          *ngIf="role !== undefined"
+          [mode]="'mobile'"
+        ></app-user-nav-card>
       </ul>
     </div>
   </div>

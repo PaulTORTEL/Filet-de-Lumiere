@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { NzModalService } from "ng-zorro-antd";
+import { NzModalService, NzMessageService } from "ng-zorro-antd";
 import { LoginComponent } from "../login/login.component";
 import { UserService } from "../../services/user.service";
 import { AuthService } from "../../services/auth.service";
@@ -18,7 +18,8 @@ export class NavbarComponent implements OnInit {
 
   constructor(
     private modalService: NzModalService,
-    private authService: AuthService
+    private authService: AuthService,
+    private message: NzMessageService
   ) {}
 
   ngOnInit() {
@@ -45,5 +46,18 @@ export class NavbarComponent implements OnInit {
 
   onBurgerClick() {
     this.burger = !this.burger;
+  }
+
+  onDisconnect() {
+    this.authService
+      .disconnect()
+      .then(() => {
+        this.burger = false;
+        this.authService.setRole(undefined);
+        this.message.create("success", "Vous vous êtes déconnecté");
+      })
+      .catch(() => {
+        this.message.create("error", "Une erreur est survenue...");
+      });
   }
 }

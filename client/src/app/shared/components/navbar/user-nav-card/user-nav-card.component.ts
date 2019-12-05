@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 import { UserService } from "../../../services/user.service";
 import { AuthService } from "../../../services/auth.service";
 import { NzMessageService } from "ng-zorro-antd";
@@ -11,6 +11,9 @@ import { NzMessageService } from "ng-zorro-antd";
 export class UserNavCardComponent implements OnInit {
   username: string;
 
+  @Input()
+  mode: string;
+
   constructor(
     private userService: UserService,
     private authService: AuthService,
@@ -19,6 +22,7 @@ export class UserNavCardComponent implements OnInit {
 
   ngOnInit() {
     this.username = this.userService.getUserFromStorage().username;
+    console.log(this.mode);
   }
 
   onDisconnect() {

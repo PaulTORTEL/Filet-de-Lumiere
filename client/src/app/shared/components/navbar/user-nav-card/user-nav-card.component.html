@@ -1,15 +1,31 @@
-<app-notification></app-notification>
+<app-notification *ngIf="mode === 'wide'"></app-notification>
 
-<a nz-dropdown nzTrigger="click" [nzDropdownMenu]="menu">
+<a
+  nz-dropdown
+  nzTrigger="click"
+  *ngIf="mode === 'wide'"
+  [nzDropdownMenu]="menu"
+>
   {{ username }}
   <i nz-icon nzType="down"></i>
 </a>
 <nz-dropdown-menu #menu="nzDropdownMenu">
-  <ul nz-menu>
+  <ul nz-menu *ngIf="mode === 'wide'">
     <li nz-menu-item><i nz-icon nzType="control"></i>Administration</li>
     <li nz-menu-divider></li>
+
     <li nz-menu-item (click)="onDisconnect()">
       <i nz-icon nzType="logout"></i>Se déconnecter
     </li>
   </ul>
 </nz-dropdown-menu>
+
+<div *ngIf="mode === 'mobile'">
+  <li nz-menu-item class="burger-additional-item">
+    <i nz-icon nzType="control"></i>Administration
+  </li>
+
+  <li nz-menu-item class="burger-additional-item" (click)="onDisconnect()">
+    <i nz-icon nzType="logout"></i>Se déconnecter
+  </li>
+</div>
