@@ -3,6 +3,16 @@ nz-footer {
   text-align: center;
 }
 
-#newsfeed-div {
-  text-align: right;
+.ant-layout {
+  height: 100vh;
+}
+
+#main-content {
+  position: relative;
+
+  #newsfeed-div {
+    position: absolute;
+    top: 50%;
+    right: 0;
+  }
 }

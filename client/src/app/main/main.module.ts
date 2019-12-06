@@ -9,7 +9,7 @@ import { NavbarComponent } from "./navbar/navbar.component";
 import { LoginComponent } from "./login/login.component";
 import { UserNavCardComponent } from "./navbar/user-nav-card/user-nav-card.component";
 import { NotificationComponent } from "./navbar/notification/notification.component";
-import { NewsfeedComponent } from './newsfeed/newsfeed.component';
+import { NewsfeedComponent } from "./newsfeed/newsfeed.component";
 
 @NgModule({
   declarations: [
@@ -27,6 +27,6 @@ import { NewsfeedComponent } from './newsfeed/newsfeed.component';
     NgZorroAntdModule,
     ReactiveFormsModule
   ],
-  entryComponents: [LoginComponent]
+  entryComponents: [LoginComponent, NewsfeedComponent]
 })
 export class MainModule {}

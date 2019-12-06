@@ -7,13 +7,11 @@ import { NzDrawerRef } from "ng-zorro-antd";
   styleUrls: ["./newsfeed.component.scss"]
 })
 export class NewsfeedComponent implements OnInit {
-  @Input() value = "";
-
   constructor(private drawerRef: NzDrawerRef<string>) {}
 
   ngOnInit() {}
 
   close(): void {
-    this.drawerRef.close(this.value);
+    this.drawerRef.close();
   }
 }

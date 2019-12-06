@@ -2,7 +2,7 @@
   <nz-header>
     <app-navbar></app-navbar>
   </nz-header>
-  <nz-content>
+  <nz-content id="main-content">
     <router-outlet></router-outlet>
     <div id="newsfeed-div">
       <button
@@ -11,8 +11,9 @@
         nz-tooltip
         nzTooltipTitle="Newsfeed"
         nzTooltipPlacement="left"
+        (click)="onNewsfeedClick()"
       >
-        <i nz-icon nzType="double-left" nzTheme="outline"></i>
+        <i nz-icon nzType="double-left" nzTheme="outline" style></i>
       </button>
     </div>
   </nz-content>
