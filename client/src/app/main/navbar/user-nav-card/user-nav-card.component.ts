@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { UserService } from "../../../services/user.service";
-import { AuthService } from "../../../services/auth.service";
+import { UserService } from "../../../shared/services/user.service";
+import { AuthService } from "../../../shared/services/auth.service";
 import { NzMessageService } from "ng-zorro-antd";
 
 @Component({
@@ -22,7 +22,6 @@ export class UserNavCardComponent implements OnInit {
 
   ngOnInit() {
     this.username = this.userService.getUserFromStorage().username;
-    console.log(this.mode);
   }
 
   onDisconnect() {

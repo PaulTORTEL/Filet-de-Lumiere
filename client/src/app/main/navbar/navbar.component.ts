@@ -1,9 +1,8 @@
 import { Component, OnInit } from "@angular/core";
-import { NzModalService, NzMessageService } from "ng-zorro-antd";
+import { NzMessageService, NzModalService } from "ng-zorro-antd";
+import { AuthService } from "../../shared/services/auth.service";
+import { UserRole } from "../../utils/role-utils";
 import { LoginComponent } from "../login/login.component";
-import { UserService } from "../../services/user.service";
-import { AuthService } from "../../services/auth.service";
-import { UserRole } from "../../../utils/role-utils";
 
 @Component({
   selector: "app-navbar",
@@ -26,7 +25,7 @@ export class NavbarComponent implements OnInit {
     this.authService.role$.subscribe(role => {
       this.role = role;
     });
-    this.authService.getRole();
+    this.authService.getRole().catch(() => {});
   }
 
   showModalLogin(): void {

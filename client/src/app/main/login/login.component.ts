@@ -1,9 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { AuthService } from "../../services/auth.service";
+import { AuthService } from "../../shared/services/auth.service";
 import { NzModalRef, NzMessageService } from "ng-zorro-antd";
-import { INTERNALERROR } from "../../../utils/http-utils";
-import { UserService } from "../../services/user.service";
+import { INTERNALERROR } from "../../utils/http-utils";
+import { UserService } from "../../shared/services/user.service";
 
 @Component({
   selector: "app-login",
