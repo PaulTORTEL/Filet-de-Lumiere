@@ -2,7 +2,20 @@
   <nz-header>
     <app-navbar></app-navbar>
   </nz-header>
-  <nz-content> <router-outlet></router-outlet></nz-content>
+  <nz-content>
+    <router-outlet></router-outlet>
+    <div id="newsfeed-div">
+      <button
+        nz-button
+        nzType="primary"
+        nz-tooltip
+        nzTooltipTitle="Newsfeed"
+        nzTooltipPlacement="left"
+      >
+        <i nz-icon nzType="double-left" nzTheme="outline"></i>
+      </button>
+    </div>
+  </nz-content>
   <nz-footer
     >Copyright Filet de Lumière - 2019-2020 - Tous droits réservés</nz-footer
   >

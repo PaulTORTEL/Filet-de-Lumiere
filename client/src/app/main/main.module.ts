@@ -9,6 +9,7 @@ import { NavbarComponent } from "./navbar/navbar.component";
 import { LoginComponent } from "./login/login.component";
 import { UserNavCardComponent } from "./navbar/user-nav-card/user-nav-card.component";
 import { NotificationComponent } from "./navbar/notification/notification.component";
+import { NewsfeedComponent } from './newsfeed/newsfeed.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { NotificationComponent } from "./navbar/notification/notification.compon
     NavbarComponent,
     LoginComponent,
     UserNavCardComponent,
-    NotificationComponent
+    NotificationComponent,
+    NewsfeedComponent
   ],
   imports: [
     CommonModule,
