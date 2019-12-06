@@ -15,7 +15,10 @@ export class MainComponent implements OnInit {
   onNewsfeedClick(): void {
     const drawerRef = this.drawerService.create<NewsfeedComponent>({
       nzTitle: "Newsfeed",
-      nzContent: NewsfeedComponent
+      nzContent: NewsfeedComponent,
+      nzKeyboard: true,
+      nzMaskStyle: { background: "unset" },
+      nzMask: true
     });
   }
 }
