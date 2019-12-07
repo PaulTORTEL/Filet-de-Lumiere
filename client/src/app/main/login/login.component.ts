@@ -1,9 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { NzMessageService, NzModalRef } from "ng-zorro-antd";
 import { AuthService } from "../../shared/services/auth.service";
-import { NzModalRef, NzMessageService } from "ng-zorro-antd";
-import { INTERNALERROR } from "../../utils/http-utils";
 import { UserService } from "../../shared/services/user.service";
+import { INTERNALERROR } from "../../utils/http-utils";
 
 @Component({
   selector: "app-login",
@@ -58,7 +58,7 @@ export class LoginComponent implements OnInit {
           if (errCode === INTERNALERROR) {
             this.message.create(
               "error",
-              "Une erreur côté serveur vient de se produire"
+              "Une erreur vient de se produire, veuillez réessayer"
             );
           } else {
             this.error = true;

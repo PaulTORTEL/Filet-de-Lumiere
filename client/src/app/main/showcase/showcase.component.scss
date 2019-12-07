@@ -1,0 +1,14 @@
+#showcase-carousel {
+  align-items: center;
+  display: flex;
+
+  .showcase-carousel-content {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    height: 760px;
+    img {
+      max-height: 760px;
+    }
+  }
+}

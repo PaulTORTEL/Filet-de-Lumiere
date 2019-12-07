@@ -1,1 +1,18 @@
-<p>showcase works!</p>
+<nz-carousel
+  nzAutoPlay
+  [nzAutoPlaySpeed]="3000"
+  [nzEffect]="'fade'"
+  [nzDots]="false"
+  [nzEnableSwipe]="false"
+  (nzBeforeChange)="onItemChange()"
+  id="showcase-carousel"
+>
+  <div
+    nz-carousel-content
+    *ngFor="let index of arr"
+    class="showcase-carousel-content"
+  >
+    <p style="color: aliceblue">{{ index.alt }}</p>
+    <img src="{{ index.src }}" width="1200px" />
+  </div>
+</nz-carousel>
