@@ -1,5 +1,9 @@
 import { Component, OnInit } from "@angular/core";
-import { NzDrawerService, NzNotificationService } from "ng-zorro-antd";
+import {
+  NzDrawerService,
+  NzNotificationService,
+  NzConfigService
+} from "ng-zorro-antd";
 import { NewsfeedComponent } from "./newsfeed/newsfeed.component";
 
 @Component({
@@ -10,11 +14,12 @@ import { NewsfeedComponent } from "./newsfeed/newsfeed.component";
 export class MainComponent implements OnInit {
   constructor(
     private drawerService: NzDrawerService,
-    private notification: NzNotificationService
+    private notification: NzNotificationService,
+    private readonly nzConfigService: NzConfigService
   ) {}
 
   ngOnInit() {
-    this.notification.config({ nzTop: "100px" });
+    this.nzConfigService.set("notification", { nzTop: "100px" });
     this.createBasicNotification();
   }
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { NzMessageService, NzModalService } from "ng-zorro-antd";
 import { AuthService } from "../../shared/services/auth.service";
-import { UserRole } from "../../utils/role-utils";
+import { UserRole } from "../../utils/enums/user-role";
 import { LoginComponent } from "../login/login.component";
 
 @Component({

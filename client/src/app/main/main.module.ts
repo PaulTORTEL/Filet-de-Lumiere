@@ -10,7 +10,7 @@ import { LoginComponent } from "./login/login.component";
 import { UserNavCardComponent } from "./navbar/user-nav-card/user-nav-card.component";
 import { NotificationComponent } from "./navbar/notification/notification.component";
 import { NewsfeedComponent } from "./newsfeed/newsfeed.component";
-import { ShowcaseComponent } from "./showcase/showcase.component";
+import { HomeComponent } from "./home/home.component";
 
 @NgModule({
   declarations: [
@@ -20,7 +20,7 @@ import { ShowcaseComponent } from "./showcase/showcase.component";
     UserNavCardComponent,
     NotificationComponent,
     NewsfeedComponent,
-    ShowcaseComponent
+    HomeComponent
   ],
   imports: [
     CommonModule,

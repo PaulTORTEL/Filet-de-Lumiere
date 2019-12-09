@@ -1,13 +1,14 @@
 import {
   Component,
+  HostListener,
   OnInit,
   ViewChild,
-  SimpleChange,
-  SimpleChanges,
-  HostListener,
-  ElementRef
+  Input
 } from "@angular/core";
 import { NzCarouselComponent } from "ng-zorro-antd";
+import { ConfigService } from "../../services/config.service";
+import { Mode } from "../../../utils/enums/mode";
+import { ShowcaseOverlay } from "../../../utils/enums/showcase-overlay";
 
 @Component({
   selector: "app-showcase",
@@ -18,11 +19,25 @@ export class ShowcaseComponent implements OnInit {
   indexForward = 0;
   indexBackward = 0;
   forward = true;
+  mode: Mode;
+
+  @Input()
+  overlay: ShowcaseOverlay; // TODO: use overlay to display description of photos when hover (desktop)/click (mobile)
 
   @ViewChild(NzCarouselComponent, { static: false })
   myCarousel: NzCarouselComponent;
 
-  array = [];
+  array = [
+    "http://filetdelumiere.free.fr/v2/assets/imgs/wallhaven-64679.jpg",
+    "http://filetdelumiere.free.fr/v2/assets/imgs/wallhaven-214916.jpg",
+    "http://filetdelumiere.free.fr/v2/assets/imgs/wallhaven-7599.jpg",
+    "http://filetdelumiere.free.fr/v2/assets/imgs/wallhaven-201903.jpg",
+    "http://filetdelumiere.free.fr/v2/assets/imgs/wallhaven-193719.jpg",
+    "http://filetdelumiere.free.fr/v2/assets/imgs/wallhaven-213201.jpg",
+    "http://filetdelumiere.free.fr/v2/assets/imgs/wallhaven-214313.jpg",
+    "http://filetdelumiere.free.fr/v2/assets/imgs/wallhaven-214316.jpg",
+    "http://filetdelumiere.free.fr/photos/DSC_3121c_1000x667.jpg"
+  ];
 
   arr = [
     new Image(),
@@ -36,9 +51,11 @@ export class ShowcaseComponent implements OnInit {
     new Image()
   ];
 
-  constructor() {}
+  constructor(private configService: ConfigService) {}
 
   ngOnInit() {
+    this.configService.modeSource$.subscribe(mode => (this.mode = mode));
+
     this.indexBackward = this.arr.length - 1;
     this.arr[this.indexForward].alt = "" + this.indexForward;
     this.arr[this.indexForward].src = this.array[this.indexForward++];
@@ -54,6 +71,15 @@ export class ShowcaseComponent implements OnInit {
 
   @HostListener("onmousewheel", ["$event"]) onMouseWheelIE(event: any) {
     this.mouseWheelFunc(event);
+  }
+
+  @HostListener("click", ["$event.target"])
+  onClick() {
+    if (this.mode === Mode.DESKTOP) {
+      this.myCarousel.next();
+    } else {
+      //TODO
+    }
   }
 
   mouseWheelFunc(event: any) {

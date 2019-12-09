@@ -5,7 +5,7 @@ import { httpOptions } from "../../utils/http-utils";
 import { User } from "../models/user";
 import { UserService } from "./user.service";
 import { Observable, Subject } from "rxjs";
-import { UserRole } from "../../utils/role-utils";
+import { UserRole } from "../../utils/enums/user-role";
 
 @Injectable({
   providedIn: "root"
