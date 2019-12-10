@@ -1,6 +1,6 @@
 <nz-carousel
   nzAutoPlay
-  [nzAutoPlaySpeed]="3000"
+  [nzAutoPlaySpeed]="30000"
   [nzEffect]="'fade'"
   [nzDots]="false"
   [nzEnableSwipe]="false"
@@ -12,7 +12,6 @@
     *ngFor="let index of arr"
     class="showcase-carousel-content"
   >
-    <p style="color: aliceblue">{{ index.alt }}</p>
     <app-photo [src]="index.src" [mode]="mode" [overlay]="overlay"></app-photo>
   </div>
 </nz-carousel>

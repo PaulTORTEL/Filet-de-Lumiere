@@ -9,7 +9,7 @@ export class ConfigService {
   readonly threshold = 810;
 
   private modeSource = new BehaviorSubject<Mode>(this.getCurrentMode());
-  modeSource$ = this.modeSource.asObservable();
+  mode$ = this.modeSource.asObservable();
 
   constructor() {}
 

@@ -54,7 +54,7 @@ export class ShowcaseComponent implements OnInit {
   constructor(private configService: ConfigService) {}
 
   ngOnInit() {
-    this.configService.modeSource$.subscribe(mode => (this.mode = mode));
+    this.configService.mode$.subscribe(mode => (this.mode = mode));
 
     this.indexBackward = this.arr.length - 1;
     this.arr[this.indexForward].alt = "" + this.indexForward;
