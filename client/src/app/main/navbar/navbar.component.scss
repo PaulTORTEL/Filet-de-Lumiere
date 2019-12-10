@@ -21,7 +21,7 @@
   position: absolute;
   right: 30px;
   z-index: 1;
-  line-height: 94px;
+  line-height: 75px;
 
   .burger-nav-item {
     cursor: pointer;
@@ -38,10 +38,10 @@
 
 #header {
   padding: 0px 20px 0px 20px;
-  box-shadow: 0 2px 8px #4a4a4a;
+  box-shadow: 0px 0px 10px 0 #0f0f0f;
 
   .header-menu {
-    line-height: 94px;
+    line-height: 75px;
 
     li:after {
       background: none repeat scroll 0 0 transparent;
@@ -72,11 +72,11 @@
   }
 
   .main-user-card {
-    line-height: 94px;
+    line-height: 75px;
   }
 
   .logo {
-    height: 94px;
+    height: 75px;
     opacity: 0.9;
     &:hover {
       opacity: 1;
