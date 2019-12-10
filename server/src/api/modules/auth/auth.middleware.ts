@@ -1,10 +1,8 @@
-import { Request, Response, NextFunction } from 'express';
-import ErrorHandler from '../../utils/error-handler';
-import jwt from 'jsonwebtoken';
-import Config from '../../../../config';
-import { UNAUTHORIZED } from '../../utils/status-code';
+import { NextFunction, Request, Response } from 'express';
 import { User } from '../../../entities/user';
+import ErrorHandler from '../../utils/error-handler';
 import { DecodedAuthJwt } from '../../utils/model-utils';
+import { UNAUTHORIZED } from '../../utils/status-code';
 import AuthService from './auth.service';
 
 export default class AuthMiddleware {

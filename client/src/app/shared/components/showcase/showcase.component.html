@@ -13,6 +13,6 @@
     class="showcase-carousel-content"
   >
     <p style="color: aliceblue">{{ index.alt }}</p>
-    <img src="{{ index.src }}" width="1200px" />
+    <app-photo [src]="index.src" [mode]="mode" [overlay]="overlay"></app-photo>
   </div>
 </nz-carousel>

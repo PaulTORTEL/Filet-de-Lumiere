@@ -1,11 +1,11 @@
 import { Request, Response } from 'express';
-import ErrorHandler from '../../utils/error-handler';
-import AuthService from './auth.service';
-import { UNAUTHORIZED, OK, NOTFOUND, INTERNALERROR } from '../../utils/status-code';
-import { TokenUser, DecodedAuthJwt } from '../../utils/model-utils';
 import { User } from '../../../entities/user';
-import UserService from '../user/user.service';
 import { UserRole } from '../../../enum/role';
+import ErrorHandler from '../../utils/error-handler';
+import { TokenUser } from '../../utils/model-utils';
+import { NOTFOUND, OK, UNAUTHORIZED } from '../../utils/status-code';
+import UserService from '../user/user.service';
+import AuthService from './auth.service';
 
 export default class AuthController {
   public static async login(req: Request, res: Response): Promise<Response | void> {

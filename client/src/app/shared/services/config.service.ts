@@ -18,7 +18,11 @@ export class ConfigService {
   }
 
   refreshMode() {
-    this.setMode(this.getCurrentMode());
+    const currentMode = this.getCurrentMode();
+
+    if (currentMode !== this.modeSource.getValue()) {
+      this.setMode(currentMode);
+    }
   }
 
   getCurrentMode(): Mode {

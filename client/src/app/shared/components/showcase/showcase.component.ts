@@ -78,7 +78,7 @@ export class ShowcaseComponent implements OnInit {
     if (this.mode === Mode.DESKTOP) {
       this.myCarousel.next();
     } else {
-      //TODO
+      //nothing
     }
   }
 
