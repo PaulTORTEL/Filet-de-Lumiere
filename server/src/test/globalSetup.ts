@@ -1,11 +1,11 @@
-import { User } from '../entities/user';
 import { Connection } from 'typeorm';
 import { getDbConnection } from '../db/database';
 import { UserFactory } from './factories/user-factory';
 import { UserRole } from '../enum/role';
+import { env } from 'process';
 
 async function truncateTables(connection: Connection): Promise<void> {
-  await connection.query(`
+   await connection.query(`
   CREATE OR REPLACE FUNCTION truncate_tables(username IN VARCHAR) RETURNS void AS $$
   DECLARE
       statements CURSOR FOR
@@ -19,19 +19,21 @@ async function truncateTables(connection: Connection): Promise<void> {
   $$ LANGUAGE plpgsql;
   `);
 
-  await connection.query('SELECT truncate_tables(\'postgres\')');
+   await connection.query("SELECT truncate_tables('postgres')");
 }
 
 export default async function globalSetup(): Promise<void> {
-  console.log('\nConnecting to the testing db...');
-  const connection = await getDbConnection();
-  console.log('Truncating all the tables...');
+   console.log('\nConnecting to the testing db...');
+   console.log('\n Dir name : ' + __dirname);
+   console.log('\n node env: ' + process.env.node_env);
+   const connection = await getDbConnection();
+   console.log('Truncating all the tables...');
 
-  // Cleaning all the db to make sure tests are atomic
-  await truncateTables(connection);
+   // Cleaning all the db to make sure tests are atomic
+   await truncateTables(connection);
 
-  console.log('Inserting testing data into the tables...');
-  await UserFactory.create('John Doe', 'john.doe@test.com', 'admin123*', UserRole.OWNER);
+   console.log('Inserting testing data into the tables...');
+   await UserFactory.create('John Doe', 'john.doe@test.com', 'admin123*', UserRole.OWNER);
 
-  console.log('Setup done');
+   console.log('Setup done');
 }
